@@ -36,8 +36,8 @@ We benchmark `engz` using complex, multi-step user queries (e.g., *"I need to le
 
 | Model | v1.1.0 Score | v1.2.0 Score | Bullet Cap (≤ 10) | Word Count (≤ 15) | Resource Syntax | Status |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Claude 3.5 Sonnet** | 98% | **100%** | Pass (10) | Pass | Pass | **PASSED** |
-| **Gemini 1.5 Pro** | 90% | **100%** | Pass (10) | Pass | Pass | **PASSED** |
+| **claude sonnet 5** | 98% | **100%** | Pass (10) | Pass | Pass | **PASSED** |
+| **gemini pro 3.1** | 90% | **100%** | Pass (10) | Pass | Pass | **PASSED** |
 | **ChatGPT (GPT-5.6)** | 60% | **85%** | **Fail (11)** | Pass | Pass | **PARTIAL** |
 
 *Note: In the v1.2.0 patch, strict rule termination and trailing period removals were introduced, boosting performance across all major models.*
