@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Animating_engz.gif" width="300" alt="ENGZ Tactical Radio Logo">
+  <img src="engz_logo.png" width="300" alt="ENGZ Tactical Radio Logo">
 </p>
 
 <h1 align="center">engz-ai-skill</h1>
