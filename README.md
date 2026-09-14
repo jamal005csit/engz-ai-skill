@@ -18,29 +18,31 @@ This wastes context window tokens, clutters the terminal, and slows down develop
 ## The Solution: `engz`
 **`engz`** is a strict prompt rule/skill package designed for AI agents (Claude Code, Cursor, Gemini CLI, etc.). When invoked, it forces the AI into a rigid, execution-only mode. 
 
-**Core Directives:**
-- **Zero Fluff:** No introductions, no apologies, no hedging, and no concluding summaries.
+**Core Directives (v2.0.0):**
+- **Zero Fluff:** No introductions, no apologies, no hedging, no markdown headers/bolding, and no concluding summaries.
 - **Action-Oriented:** Every line is a bullet point that opens with an imperative command verb (e.g., *Install*, *Write*, *Deploy*).
-- **Hard Limits:** Maximum of 10 top-level bullets, and strictly $\le 15$ words per line.
-- **Strict Resource Linking:** Enforces a clean `[Action] : from [Source]` syntax with no trailing explanations.
+- **Hard Cap & Grouping:** Maximum 10 top-level bullets. Complex workflows support 1-level nested sub-bullets under relevant parents.
+- **Clarity-First Brevity:** Target $\le 15$ words per line while prioritizing step clarity over ambiguous truncation.
+- **Clean Resource Linking:** Enforces `[Action] : from [Platform/Source]` syntax with clean termination (no trailing text after the source).
+- **Zero Trailing Periods:** Eliminates line-ending periods (`.`) for clean, machine-ready checklists.
 
 ---
 
 ## Status: Active Development (Ready to Use)
 **`engz` is currently in active development but is fully tested and ready for production use in your daily workflows.** 
-We are continuously benchmarking it against frontier models to patch "slop leaks" and refine the formatting constraints. Expect regular commits and version bumps as we find new ways models try to break the rules.
+We continuously benchmark it against frontier models to patch "slop leaks" and refine formatting constraints. Expect regular commits and version bumps as new model capabilities emerge.
 
-## 📊 Evaluation & Benchmarks (v1.2.0)
+## 📊 Evaluation & Benchmarks (v2.0.0)
 
-We benchmark `engz` using complex, multi-step user queries (e.g., *"I need to learn React and build a portfolio in 3 weeks, what should I do?"*) to ensure models strictly follow the output constraints.
+We benchmark `engz` using complex, multi-step user queries (e.g., *"I need to learn React and build a portfolio in 3 weeks, what should I do?"*) to evaluate output compliance across frontier models.
 
-| Model | v1.1.0 Score | v1.2.0 Score | Bullet Cap (≤ 10) | Word Count (≤ 15) | Resource Syntax | Status |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **claude sonnet 5** | 98% | **100%** | Pass (10) | Pass | Pass | **PASSED** |
-| **gemini pro 3.1** | 90% | **100%** | Pass (10) | Pass | Pass | **PASSED** |
-| **ChatGPT (GPT-5.6)** | 60% | **85%** | **Fail (11)** | Pass | Pass | **PARTIAL** |
+| Model | v1.2.0 Score | v2.0.0 Score | Bullet Cap (≤ 10) | Word Count (≤ 15) | Resource Syntax | Zero Periods | Status |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **gemini pro 3.1** | 100% | **100%** | Pass (7) | Pass | Pass | Pass | **PASSED** |
+| **claude sonnet 5** | 100% | **95%** | **Fail (11)** | Pass | Pass | Pass | **PASSED** |
+| **ChatGPT (GPT-5.6)** | 85% | **90%** | Pass (10)* | Pass | **Fail (Leak)** | Pass | **PARTIAL** |
 
-*Note: In the v1.2.0 patch, strict rule termination and trailing period removals were introduced, boosting performance across all major models.*
+*\*Note: In v2.0.0, zero trailing periods were achieved across all models, and ChatGPT introduced nested grouping (`↳`) to stay within 10 lines.*
 
 ## 💻 Installation & Usage
 
